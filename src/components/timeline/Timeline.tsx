@@ -1,7 +1,7 @@
 "use client";
 import { TimelineContext } from "@/context/TimelineContext";
 import Image from "next/image";
-import React, { useContext } from "react";
+import React, { act, useContext, useState } from "react";
 
 const Timeline = () => {
   const context = useContext(TimelineContext);
@@ -9,14 +9,71 @@ const Timeline = () => {
     throw new Error("useTimeline must be used within TimelineProvider");
   }
   const { timeline } = context;
-  console.log(timeline);
+  const [filtered, setFiltered] = useState(timeline);
+  const [activeFilter, setActiveFilter] = useState("All");
+
+  const handleFilter = (action: string) => {
+    setActiveFilter(action);
+
+    if (action === "all") {
+      setFiltered(timeline);
+      return;
+    }
+
+    const filteredTimeline = timeline.filter(
+      (t) => t.label.toLowerCase() === action.toLowerCase(),
+    );
+
+    setFiltered(filteredTimeline);
+  };
+
+  const getCurrentDate = () => {
+    const options: Intl.DateTimeFormatOptions = {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+    };
+    return new Date().toLocaleDateString("en-US", options);
+  };
 
   return (
     <div className="container mx-auto mt-10">
-      {timeline.map((item) => (
+      <div className="mb-5">
+        <button
+          className="btn"
+          popoverTarget="popover-1"
+          style={{ anchorName: "--anchor-1" }}
+        >
+          Filter timeline
+        </button>
+
+        <ul
+          className="dropdown menu w-52 rounded-box bg-base-100 shadow-sm"
+          popover="auto"
+          id="popover-1"
+          style={{ positionAnchor: "--anchor-1" } /* as React.CSSProperties */}
+        >
+          <li>
+            <a onClick={() => handleFilter("all")}>All</a>
+          </li>
+          <li>
+            <a onClick={() => handleFilter("call")}>Call</a>
+          </li>
+          <li>
+            <a onClick={() => handleFilter("text")}>Text</a>
+          </li>
+          <li>
+            <a onClick={() => handleFilter("video")}>Video</a>
+          </li>
+        </ul>
+      </div>
+      {filtered.map((item, i) => (
         <div
-          key={item.id}
-          className="flex items-center gap-4 p-4 shadow-md rounded-lg mb-4"
+          key={i}
+          className="flex items-center gap-4 p-4 shadow-md rounded-lg mb-6"
         >
           <Image
             src={item.icon}
@@ -25,11 +82,14 @@ const Timeline = () => {
             height={48}
             className="w-12 h-12 rounded-full"
           />
-          <h3 className="text-lg font-medium">
-            {" "}
-            <span className="text-md font-bold">{item.label}</span> with{" "}
-            {item.name}
-          </h3>
+          <div>
+            <h3 className="text-lg font-medium">
+              {" "}
+              <span className="text-md font-bold">{item.label}</span> with{" "}
+              {item.name}
+            </h3>
+            <p className="text-sm text-gray-500">{getCurrentDate()}</p>
+          </div>
         </div>
       ))}
     </div>

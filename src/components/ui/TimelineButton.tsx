@@ -1,7 +1,7 @@
 "use client";
 
 import { Timeline, TimelineContext } from "@/context/TimelineContext";
-import React, { ReactNode, useContext } from "react";
+import React, { useContext } from "react";
 
 import { Friend } from "../friends/FriendList";
 import Image from "next/image";
@@ -31,22 +31,28 @@ const TimelineButton = ({ friend }: { friend: Friend }) => {
   if (!context) {
     throw new Error("useTimeline must be used within TimelineProvider");
   }
-  const { timeline, setTimeLine } = context;
+  const { setTimeLine } = context;
 
   const handleCall = (icons: string, labels: string) => {
-    const existTimeline = timeline.find((t) => t.id === friend.id);
-
-    if (!existTimeline) {
-      const t: Timeline = {
-        id: friend.id,
-        name: friend.name,
-        label: labels,
-        icon: icons,
-      };
-      setTimeLine((prev) => [...prev, t]);
-    } else {
-      alert("Timeline already exists for this friend.");
-    }
+    // const existTimeline = timeline.find((t) => t.id === friend.id);
+    const t: Timeline = {
+      id: friend.id,
+      name: friend.name,
+      label: labels,
+      icon: icons,
+    };
+    setTimeLine((prev) => [...prev, t]);
+    // if (!existTimeline) {
+    //   const t: Timeline = {
+    //     id: friend.id,
+    //     name: friend.name,
+    //     label: labels,
+    //     icon: icons,
+    //   };
+    //   setTimeLine((prev) => [...prev, t]);
+    // } else {
+    //   alert("Timeline already exists for this friend.");
+    // }
   };
 
   return (
