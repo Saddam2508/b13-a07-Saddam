@@ -1,7 +1,7 @@
 "use client";
 import { TimelineContext } from "@/context/TimelineContext";
 import Image from "next/image";
-import React, { act, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 
 const Timeline = () => {
   const context = useContext(TimelineContext);
@@ -70,28 +70,33 @@ const Timeline = () => {
           </li>
         </ul>
       </div>
-      {filtered.map((item, i) => (
-        <div
-          key={i}
-          className="flex items-center gap-4 p-4 shadow-md rounded-lg mb-6"
-        >
-          <Image
-            src={item.icon}
-            alt={item.name}
-            width={48}
-            height={48}
-            className="w-12 h-12 rounded-full"
-          />
-          <div>
-            <h3 className="text-lg font-medium">
-              {" "}
-              <span className="text-md font-bold">{item.label}</span> with{" "}
-              {item.name}
-            </h3>
-            <p className="text-sm text-gray-500">{getCurrentDate()}</p>
+      {filtered.length > 0 ? (
+        filtered.map((item, i) => (
+          <div
+            key={i}
+            className="flex items-center gap-4 p-4 shadow-md rounded-lg mb-6"
+          >
+            <Image
+              src={item.icon}
+              alt={item.name}
+              width={48}
+              height={48}
+              className="w-12 h-12 rounded-full"
+            />
+            <div>
+              <h3 className="text-lg font-medium">
+                {" "}
+                <span className="text-md font-bold">
+                  {item.label}
+                </span> with {item.name}
+              </h3>
+              <p className="text-sm text-gray-500">{getCurrentDate()}</p>
+            </div>
           </div>
-        </div>
-      ))}
+        ))
+      ) : (
+        <p> No timeline items found.</p>
+      )}
     </div>
   );
 };
