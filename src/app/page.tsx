@@ -1,9 +1,9 @@
-import Image from "next/image";
+import FriendList from "@/components/friends/FriendList";
 
 export default function Home() {
   return (
-    <div>
-      <main>saddam</main>
+    <div className="container mx-auto">
+      <FriendList />
     </div>
   );
 }

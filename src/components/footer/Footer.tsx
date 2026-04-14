@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
@@ -22,6 +23,20 @@ const Footer = () => {
           <span className="bg-white rounded-full p-3 text-black cursor-pointer">
             <FaTwitter />
           </span>
+        </div>
+      </div>
+      <div className="container mx-auto flex justify-between mt-5 text-white">
+        <p>&copy; 2026 KeenKeeper. All rights reserved.</p>
+        <div className="flex gap-5">
+          <Link href="/privacy-policy" className="text-white hover:underline">
+            Privacy Policy
+          </Link>
+          <Link href="/terms-of-service" className="text-white hover:underline">
+            Terms of Service
+          </Link>
+          <Link href="/cookies" className="text-white hover:underline">
+            Cookies
+          </Link>
         </div>
       </div>
     </div>
