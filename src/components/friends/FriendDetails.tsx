@@ -1,13 +1,9 @@
 import { HiOutlineBellSnooze } from "react-icons/hi2";
 import FriendDetailCard from "./FriendDetailCard";
 import { Friend } from "./FriendList";
-import {
-  RiArchiveLine,
-  RiDeleteBin6Line,
-  RiMessage2Line,
-} from "react-icons/ri";
-import { LuPhoneCall } from "react-icons/lu";
-import { PiVideoCameraLight } from "react-icons/pi";
+import { RiArchiveLine, RiDeleteBin6Line } from "react-icons/ri";
+
+import TimelineButton from "../ui/TimelineButton";
 
 const FriendDetails = ({ friend }: { friend: Friend }) => {
   const formatDate = (dateString: string) => {
@@ -76,29 +72,7 @@ const FriendDetails = ({ friend }: { friend: Friend }) => {
         </div>
         <div className="p-2">
           <h2 className="text-xl font-bold my-3 px-3">Quick Check-In</h2>
-          <div className="flex justify-between p-6 shadow-md rounded-lg">
-            <button className="btn flex-col px-12 py-15">
-              <span className="text-2xl">
-                {" "}
-                <LuPhoneCall />{" "}
-              </span>
-              <span className="text-xl">Call</span>
-            </button>
-            <button className="btn flex-col px-12 py-15">
-              <span className="text-2xl">
-                {" "}
-                <RiMessage2Line />{" "}
-              </span>
-              <span className="text-xl">Text</span>
-            </button>
-            <button className="btn flex-col px-12 py-15">
-              <span className="text-2xl">
-                {" "}
-                <PiVideoCameraLight />{" "}
-              </span>
-              <span className="text-xl">Video</span>
-            </button>
-          </div>
+          <TimelineButton friend={friend} />
         </div>
       </div>
     </div>
