@@ -1,11 +1,22 @@
+"use client";
+
 import Link from "next/link";
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
-
+import { motion } from "framer-motion";
 const Footer = () => {
   return (
-    <div className="bg-green-800 py-15">
+    <motion.div
+      initial={{ opacity: 0, y: 150 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{
+        duration: 0.45,
+        ease: "easeOut",
+      }}
+      className="bg-green-800 py-15 px-4 sm:px-0"
+    >
       <div className="text-center space-y-3 text-white">
-        <h2 className="text-7xl font-bold ">KeenKeeper</h2>
+        <h2 className=" text-4xl sm:text-7xl font-bold ">KeenKeeper</h2>
         <p>
           Your personal shelf of meaningful connections. Browse, tend, and
           nurture the relationships that matter most.
@@ -25,9 +36,9 @@ const Footer = () => {
           </span>
         </div>
       </div>
-      <div className="container mx-auto flex justify-between mt-5 text-white">
+      <div className="container mx-auto flex flex-col-reverse sm:flex-row justify-between mt-5 text-white gap-3 text-center sm:text-start">
         <p>&copy; 2026 KeenKeeper. All rights reserved.</p>
-        <div className="flex gap-5">
+        <div className=" flex flex-col sm:flex-row gap-5">
           <Link href="/privacy-policy" className="text-white hover:underline">
             Privacy Policy
           </Link>
@@ -39,7 +50,7 @@ const Footer = () => {
           </Link>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -18,7 +18,7 @@ const NavLink = ({ href, children, icon }: NavLinkProps) => {
   return (
     <Link
       href={href}
-      className={isActive ? "btn bg-green-800 text-white" : "btn btn-ghost"}
+      className={`mr-3 ${isActive ? "btn bg-green-800 text-white" : "btn btn-ghost"}`}
     >
       {" "}
       {icon}

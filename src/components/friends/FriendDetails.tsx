@@ -16,7 +16,7 @@ const FriendDetails = ({ friend }: { friend: Friend }) => {
   };
 
   return (
-    <div className="container mx-auto grid grid-cols-2 my-20 gap-5">
+    <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 my-10 sm:my-20 gap-5 px-4">
       <div className="detail-left flex flex-col gap-5">
         <FriendDetailCard friend={friend} />
         <button className="btn bg-base-100 shadow-md gap-2  p-10 font-bold text-lg cursor-pointer">
@@ -42,8 +42,8 @@ const FriendDetails = ({ friend }: { friend: Friend }) => {
         </button>
       </div>
 
-      <div className="detail-right flex flex-col gap-20">
-        <div className="grid grid-cols-3 gap-5">
+      <div className="detail-right flex flex-col gap-17">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           <div className="p-6 shadow-md rounded-lg  flex flex-col justify-center items-center gap-2">
             <span className="text-2xl font-bold">62</span>
             <span>Days Since Contact</span>
@@ -53,15 +53,15 @@ const FriendDetails = ({ friend }: { friend: Friend }) => {
             <span>Goal (Days)</span>
           </div>
           <div className="p-6 shadow-md rounded-lg flex flex-col justify-center items-center gap-3">
-            <span className="text-2xl font-bold">
+            <span className="text-xl font-bold">
               {formatDate(friend.next_due_date)}
             </span>
             <span>Next Due</span>
           </div>
         </div>
-        <div className="flex justify-between p-10 shadow-md rounded-lg">
+        <div className="flex justify-between p-5 sm:p-10 shadow-md rounded-lg gap-2">
           <div className="space-y-3">
-            <h2 className="text-2xl font-bold">Relationship Goal</h2>
+            <h2 className="text-lg sm:text-2xl font-bold">Relationship Goal</h2>
             <p>
               Connect every <span className="font-bold">30 days</span>
             </p>

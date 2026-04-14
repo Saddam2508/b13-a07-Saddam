@@ -13,8 +13,6 @@ import {
   Cell,
 } from "recharts";
 
-// #region Sample data
-
 // #endregion
 const renderActiveShape = ({
   cx,
@@ -135,12 +133,6 @@ export default function TimelineChart({
         aspectRatio: 1,
       }}
       responsive
-      margin={{
-        top: 50,
-        right: 120,
-        bottom: 0,
-        left: 120,
-      }}
     >
       <Pie
         activeShape={renderActiveShape}

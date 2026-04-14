@@ -40,7 +40,7 @@ const Timeline = () => {
   };
 
   return (
-    <div className="container mx-auto mt-10">
+    <div className="container mx-auto mt-10 px-4">
       <div className="mb-5">
         <button
           className="btn"

@@ -1,7 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import { Friend } from "./FriendList";
 import Link from "next/link";
-
+import { motion } from "framer-motion";
 interface FriendCardProps {
   friend: Friend;
 }
@@ -29,29 +31,46 @@ const FriendCard = ({ friend }: FriendCardProps) => {
   };
 
   return (
-    <Link href={`/friends/${friend.id}`} className="card bg-base-100 shadow-sm">
-      <figure className="px-10 pt-10">
-        <Image
-          src={friend.picture}
-          alt={friend.name}
-          width={50}
-          height={50}
-          className="rounded-full w-24 h-24 object-cover"
-        />
-      </figure>
-      <div className="card-body items-center text-center">
-        <h2 className="card-title"> {friend.name} </h2>
-        <p>{friend.days_since_contact}d ago</p>
-        <div className="card-actions">{getTag(friend.tags)}</div>
-        <div>
-          <button
-            className={`rounded-full text-white text-md ${getStatusColor(friend.status)} mt-4`}
-          >
-            {friend.status}
-          </button>
+    <motion.div
+      initial={{ opacity: 0, y: 150 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      whileHover={{
+        scale: 1.05,
+        y: -5,
+      }}
+      viewport={{ once: true }}
+      transition={{
+        duration: 0.45,
+        ease: "easeOut",
+      }}
+    >
+      <Link
+        href={`/friends/${friend.id}`}
+        className="card bg-base-100 shadow-sm"
+      >
+        <figure className="px-10 pt-10">
+          <Image
+            src={friend.picture}
+            alt={friend.name}
+            width={50}
+            height={50}
+            className="rounded-full w-24 h-24 object-cover"
+          />
+        </figure>
+        <div className="card-body items-center text-center">
+          <h2 className="card-title"> {friend.name} </h2>
+          <p>{friend.days_since_contact}d ago</p>
+          <div className="card-actions">{getTag(friend.tags)}</div>
+          <div>
+            <button
+              className={`rounded-full text-white text-md ${getStatusColor(friend.status)} mt-4`}
+            >
+              {friend.status}
+            </button>
+          </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </motion.div>
   );
 };
 
