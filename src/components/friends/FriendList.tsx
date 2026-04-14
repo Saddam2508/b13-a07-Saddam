@@ -14,7 +14,7 @@ export interface Friend {
 }
 
 const FriendList = async () => {
-  const data = await fetch("http://localhost:3000//friends.json");
+  const data = await fetch("https://b13-a07-saddam.vercel.app/friends.json");
   const friends: Friend[] = await data.json();
 
   return (
