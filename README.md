@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📌 KeenKeeper
 
-## Getting Started
+A modern relationship management web app that helps you keep track of your friends and stay connected consistently.
 
-First, run the development server:
+---
+
+## 🚀 Description
+
+KeenKeeper is a smart social tracking application where users can manage their friendships, log interactions (Call, Text, Video), and visualize their communication patterns through an interactive timeline and charts.
+
+It helps you maintain meaningful relationships by reminding and tracking how often you connect with people.
+
+---
+
+## 🛠️ Technologies Used
+
+* ⚛️ Next.js (App Router)
+* ⚛️ React (with Hooks & Context API)
+* 🔷 TypeScript
+* 🎨 Tailwind CSS + DaisyUI
+* 📊 Recharts (for data visualization)
+* 🎞️ Framer Motion (animations)
+* 🔔 React Toastify (notifications)
+
+---
+
+## ✨ Key Features
+
+### 1. 📅 Smart Timeline Tracking
+
+* Log interactions (Call, Text, Video)
+* View activities with **relative time (e.g., 5 min ago)**
+* Sort by newest or oldest
+* Filter by interaction type
+
+---
+
+### 2. 🔍 Advanced Search & Filter
+
+* Search by **name or action**
+* Combined filtering system
+* Real-time updates without reload
+
+---
+
+### 3. 📊 Interactive Data Visualization
+
+* Pie chart showing communication distribution
+* Dynamic updates based on user activity
+* Clean and responsive UI
+
+---
+
+## 📦 Installation
 
 ```bash
+git clone https://github.com/Saddam2508/b13-a07-Saddam.git 
+cd your-repo-name
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🌐 Live Demo
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+👉 [https://b13-a07-saddam.vercel.app]
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 👨‍💻 Author
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Md Saddam Hossain**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## ⭐ Support
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+If you like this project, give it a ⭐ on GitHub!
