@@ -25,7 +25,7 @@ const TimelineButton = ({ friend }: { friend: Friend }) => {
     },
     {
       label: "Video",
-      icon: "https://www.flaticon.com/free-icon/video_8407947",
+      icon: "https://i.ibb.co/YBfXQxwn/video.png",
     },
   ];
 
