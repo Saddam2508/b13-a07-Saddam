@@ -88,7 +88,7 @@ const timeAgo = (date: string)=>{
   <input type="search" required placeholder="Search" onInput={(e)=>handleSearch((e.target as HTMLInputElement).value)} />
 </label>
       </div>
-      <div className="mb-5 text-center sm:text-start">
+      <div className="my-5 text-center sm:text-start ">
         <button
           className="btn"
           popoverTarget="popover-1"
@@ -151,7 +151,7 @@ const timeAgo = (date: string)=>{
           </div>
         ))
       ) : (
-        <p className="text-center"> No timeline items found.</p>
+        <p className="text-center mb-6"> No timeline items found.</p>
       )}
     </div>
   );
