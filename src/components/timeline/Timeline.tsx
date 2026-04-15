@@ -1,7 +1,7 @@
 "use client";
 import { TimelineContext } from "@/context/TimelineContext";
 import Image from "next/image";
-import React, { useContext, useState } from "react";
+import React, { useContext,  useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 
 const Timeline = () => {
@@ -10,41 +10,84 @@ const Timeline = () => {
     throw new Error("useTimeline must be used within TimelineProvider");
   }
   const { timeline } = context;
-  const [filtered, setFiltered] = useState(timeline);
-  const [activeFilter, setActiveFilter] = useState("All");
+
+  const [activeFilter, setActiveFilter] = useState("all");
+const [search, setSearch] = useState("")
+const [sortOrder, setSortOrder] = useState("newest")
 
   const handleFilter = (action: string) => {
     setActiveFilter(action);
-
-    if (action === "all") {
-      setFiltered(timeline);
-      return;
-    }
-
-    const filteredTimeline = timeline.filter(
-      (t) => t.label.toLowerCase() === action.toLowerCase(),
-    );
-
-    setFiltered(filteredTimeline);
   };
 
-  const getCurrentDate = () => {
-    const options: Intl.DateTimeFormatOptions = {
-      month: "short",
-      day: "numeric",
-      year: "numeric",
-      hour: "numeric",
-      minute: "2-digit",
-      hour12: true,
-    };
-    return new Date().toLocaleDateString("en-US", options);
+const handleSearch = (inputValue: string)=>{
+setSearch(inputValue)
+}
+
+
+   const filtered = timeline
+  .filter(
+      (t) => activeFilter === "all"? true: t.label.toLowerCase() === activeFilter.toLowerCase(),
+    )
+
+   .filter((item)=> item.name.toLowerCase().includes(search.toLowerCase()))
+  .sort((a, b) => {
+    const dateA = new Date(a.date).getTime();
+    const dateB = new Date(b.date).getTime();
+
+    return sortOrder === "newest"
+      ? dateB - dateA  
+      : dateA - dateB;  
+  })
+
+
+const timeAgo = (date: string)=>{
+  const now = new Date().getTime()
+  const past = new Date(date).getTime()
+  const diff = now -past
+  const seconds = Math.floor(diff/1000)
+  const minutes = Math.floor(seconds/60)
+  const hours = Math.floor(minutes/60)
+  const days = Math.floor(hours/60)
+  const options: Intl.DateTimeFormatOptions = {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
   };
+
+  const formattedDate = new Date(date).toLocaleDateString("en-US", options);
+
+
+  if(seconds < 60) return `just now (${formattedDate})` 
+  if(minutes < 60) return `${minutes} min ago (${formattedDate})`
+  if(hours < 24) return `${hours} hr ago (${formattedDate})`
+  return `${days} day ago (${formattedDate})`
+}
 
   return (
     <div className="container mx-auto mt-10 px-4">
       <h2 className="text-3xl font-bold mb-5 text-center sm:text-start">
         Timeline
       </h2>
+      <div className="flex justify-center items-center">
+        <label className="input">
+  <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <g
+      strokeLinejoin="round"
+      strokeLinecap="round"
+      strokeWidth="2.5"
+      fill="none"
+      stroke="currentColor"
+    >
+      <circle cx="11" cy="11" r="8"></circle>
+      <path d="m21 21-4.3-4.3"></path>
+    </g>
+  </svg>
+  <input type="search" required placeholder="Search" onInput={(e)=>handleSearch((e.target as HTMLInputElement).value)} />
+</label>
+      </div>
       <div className="mb-5 text-center sm:text-start">
         <button
           className="btn"
@@ -75,6 +118,12 @@ const Timeline = () => {
           <li>
             <a onClick={() => handleFilter("video")}>Video</a>
           </li>
+          <li>
+            <a onClick={() => setSortOrder("newest")}>Newest</a>
+          </li>
+          <li>
+            <a onClick={() => setSortOrder("oldest")}>Oldest</a>
+          </li>
         </ul>
       </div>
       {filtered.length > 0 ? (
@@ -97,7 +146,7 @@ const Timeline = () => {
                   {item.label}
                 </span> with {item.name}
               </h3>
-              <p className="text-sm text-gray-500">{getCurrentDate()}</p>
+              <p className="text-sm text-gray-500">{timeAgo(item.date)}</p>
             </div>
           </div>
         ))

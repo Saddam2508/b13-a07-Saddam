@@ -42,6 +42,7 @@ const TimelineButton = ({ friend }: { friend: Friend }) => {
       name: friend.name,
       label: labels,
       icon: icons,
+      date: new Date().toISOString()
     };
     setTimeLine((prev) => [...prev, t]);
     setActiveButton(labels);

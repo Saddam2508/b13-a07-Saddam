@@ -13,6 +13,7 @@ export interface Timeline {
   name: string;
   label: string;
   icon: string;
+  date: string
 }
 
 interface TimelineContextType {
