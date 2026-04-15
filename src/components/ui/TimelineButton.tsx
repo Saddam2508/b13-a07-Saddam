@@ -5,6 +5,7 @@ import React, { useContext, useState } from "react";
 
 import { Friend } from "../friends/FriendList";
 import Image from "next/image";
+import { toast } from "react-toastify";
 
 const TimelineButton = ({ friend }: { friend: Friend }) => {
   const [activeButton, setActiveButton] = useState<string | null>(null);
@@ -44,6 +45,10 @@ const TimelineButton = ({ friend }: { friend: Friend }) => {
     };
     setTimeLine((prev) => [...prev, t]);
     setActiveButton(labels);
+    toast.success(`${labels} action added to timeline for ${friend.name}`, {
+      position: "top-right",
+      autoClose: 3000,
+    });
   };
 
   return (

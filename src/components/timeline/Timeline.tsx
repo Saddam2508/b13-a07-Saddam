@@ -2,6 +2,7 @@
 import { TimelineContext } from "@/context/TimelineContext";
 import Image from "next/image";
 import React, { useContext, useState } from "react";
+import { IoIosArrowDown } from "react-icons/io";
 
 const Timeline = () => {
   const context = useContext(TimelineContext);
@@ -41,13 +42,17 @@ const Timeline = () => {
 
   return (
     <div className="container mx-auto mt-10 px-4">
+      <h2 className="text-3xl font-bold mb-5">Timeline</h2>
       <div className="mb-5">
         <button
           className="btn"
           popoverTarget="popover-1"
           style={{ anchorName: "--anchor-1" }}
         >
-          Filter timeline
+          Filter timeline{" "}
+          <span>
+            <IoIosArrowDown />
+          </span>
         </button>
 
         <ul
