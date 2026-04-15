@@ -29,7 +29,7 @@ setSearch(inputValue)
       (t) => activeFilter === "all"? true: t.label.toLowerCase() === activeFilter.toLowerCase(),
     )
 
-   .filter((item)=> item.name.toLowerCase().includes(search.toLowerCase()))
+   .filter((item)=> item.name.toLowerCase().includes(search.toLowerCase()) || item.label.toLowerCase().includes(search.toLowerCase()) )
   .sort((a, b) => {
     const dateA = new Date(a.date).getTime();
     const dateB = new Date(b.date).getTime();
