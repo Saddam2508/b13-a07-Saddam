@@ -1,5 +1,9 @@
 import TimelineChart from "@/components/timeline/TimelineChart";
-import React from "react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Chart | b13-a07-saddam",
+};
 
 const page = () => {
   return (

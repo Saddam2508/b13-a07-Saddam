@@ -124,6 +124,14 @@ export default function TimelineChart({
 
   const data = getChartData();
 
+  if (data.every((entry) => entry.value === 0)) {
+    return (
+      <div className="flex flex-col items-center justify-center h-full mt-10">
+        <p>No data available</p>
+      </div>
+    );
+  }
+
   return (
     <PieChart
       style={{

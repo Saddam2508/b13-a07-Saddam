@@ -95,7 +95,7 @@ const Timeline = () => {
           </div>
         ))
       ) : (
-        <p> No timeline items found.</p>
+        <p className="text-center"> No timeline items found.</p>
       )}
     </div>
   );

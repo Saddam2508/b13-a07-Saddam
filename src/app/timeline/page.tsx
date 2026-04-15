@@ -1,4 +1,9 @@
 import Timeline from "@/components/timeline/Timeline";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Timeline | b13-a07-saddam",
+};
 
 const page = () => {
   return (
