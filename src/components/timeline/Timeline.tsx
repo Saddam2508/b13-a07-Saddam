@@ -42,8 +42,10 @@ const Timeline = () => {
 
   return (
     <div className="container mx-auto mt-10 px-4">
-      <h2 className="text-3xl font-bold mb-5">Timeline</h2>
-      <div className="mb-5">
+      <h2 className="text-3xl font-bold mb-5 text-center sm:text-start">
+        Timeline
+      </h2>
+      <div className="mb-5 text-center sm:text-start">
         <button
           className="btn"
           popoverTarget="popover-1"
